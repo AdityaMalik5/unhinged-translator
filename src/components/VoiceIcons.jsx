@@ -160,6 +160,30 @@ export function ShakespeareIcon({ size = 40 }) {
   )
 }
 
+export function RizzIcon({ size = 40 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
+      {/* Sunglasses face */}
+      <circle cx="20" cy="20" r="13" fill="#FFD5CC" stroke="#1A1A1A" strokeWidth="2.5" />
+      {/* Cool sunglasses */}
+      <rect x="9" y="15" width="9" height="6" rx="2" fill="#1A1A1A" />
+      <rect x="22" y="15" width="9" height="6" rx="2" fill="#1A1A1A" />
+      <line x1="18" y1="18" x2="22" y2="18" stroke="#1A1A1A" strokeWidth="2" />
+      {/* Lens shine */}
+      <line x1="11" y1="17" x2="14" y2="17" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
+      <line x1="24" y1="17" x2="27" y2="17" stroke="white" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
+      {/* Smirk */}
+      <path d="M16 26C18 28 24 28 26 25" stroke="#1A1A1A" strokeWidth="2" strokeLinecap="round" />
+      {/* Sparkle left */}
+      <path d="M4 10L5 8L6 10L5 12Z" fill="#E11D48" />
+      {/* Sparkle right */}
+      <path d="M34 8L35 6L36 8L35 10Z" fill="#E11D48" />
+      {/* Heart */}
+      <path d="M34 14C34 12 36 11 37 13C38 11 40 12 40 14C40 16 37 18 37 18C37 18 34 16 34 14Z" fill="#E11D48" stroke="#1A1A1A" strokeWidth="1" />
+    </svg>
+  )
+}
+
 const iconMap = {
   conspiracy: ConspiracyIcon,
   toddler: ToddlerIcon,
@@ -168,6 +192,7 @@ const iconMap = {
   ramsay: RamsayIcon,
   'desi-parent': DesiParentIcon,
   commentator: CommentatorIcon,
+  rizz: RizzIcon,
   shakespeare: ShakespeareIcon,
 }
 
