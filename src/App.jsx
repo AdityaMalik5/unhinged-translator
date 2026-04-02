@@ -12,7 +12,7 @@ import Sparkles from './components/Sparkles'
 
 export default function App() {
   const [inputText, setInputText] = useState('')
-  const [selectedVoice, setSelectedVoice] = useState('conspiracy')
+  const [selectedVoice, setSelectedVoice] = useState('rizz')
   const [result, setResult] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
