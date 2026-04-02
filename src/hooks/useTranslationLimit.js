@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 
-const DAILY_LIMIT = 3
+const DAILY_LIMIT = 5
 const STORAGE_KEY = 'unhinged_usage'
 
 function getToday() {

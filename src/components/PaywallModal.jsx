@@ -32,7 +32,7 @@ export default function PaywallModal({ onClose }) {
           You're on a roll!
         </h2>
         <p className="text-ink-light font-medium mb-5">
-          You've used all 3 free translations today. Come back tomorrow or join
+          You've used all 5 free translations today. Come back tomorrow or join
           the waitlist for unlimited access!
         </p>
 
