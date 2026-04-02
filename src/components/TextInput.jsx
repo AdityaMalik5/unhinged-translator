@@ -3,7 +3,7 @@ export default function TextInput({ value, onChange, onTranslate, isLoading }) {
   const charCount = value.length
 
   return (
-    <div className="px-4 py-2">
+    <div className="relative z-10 px-4 py-2">
       <div className="relative">
         <textarea
           value={value}
@@ -12,14 +12,14 @@ export default function TextInput({ value, onChange, onTranslate, isLoading }) {
           rows={5}
           maxLength={5000}
           className="
-            w-full p-4 pb-8 rounded-duo border-2 border-swan bg-white
-            text-eel text-base leading-relaxed resize-none
-            placeholder:text-eel-light/60
-            focus:outline-none focus:border-lime-primary focus:ring-2 focus:ring-lime-primary/20
+            w-full p-4 pb-8 rounded-duo border-2 border-blush-dark/40 bg-cream-white/90
+            text-ink text-base leading-relaxed resize-none
+            placeholder:text-ink-light/50
+            focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20
             transition-colors duration-150
           "
         />
-        <span className="absolute bottom-3 right-4 text-xs font-semibold text-eel-light/50">
+        <span className="absolute bottom-3 right-4 text-xs font-semibold text-ink-light/50">
           {charCount}/5000
         </span>
       </div>
@@ -32,12 +32,12 @@ export default function TextInput({ value, onChange, onTranslate, isLoading }) {
           transition-all duration-150
           ${
             isEmpty || isLoading
-              ? 'bg-swan text-eel-light/50 cursor-not-allowed shadow-duo-sm shadow-swan'
-              : 'bg-lime-primary text-white shadow-duo shadow-lime-dark active:translate-y-[4px] active:shadow-none hover:bg-lime-dark'
+              ? 'bg-purple-200/40 text-ink-light/50 cursor-not-allowed shadow-duo-sm shadow-purple-300/20 backdrop-blur-sm'
+              : 'bg-purple-600/80 text-white shadow-duo shadow-purple-800/60 backdrop-blur-sm active:translate-y-[4px] active:shadow-none hover:bg-purple-700/85 border border-purple-400/30'
           }
         `}
       >
-        {isLoading ? 'Translating...' : '🔥 Translate'}
+        {isLoading ? 'Translating...' : 'Translate'}
       </button>
     </div>
   )

@@ -22,14 +22,15 @@ export default function LoadingScreen() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center py-20 px-4">
+    <div className="relative z-10 flex flex-col items-center justify-center py-20 px-4">
       {/* Bouncing dots */}
       <div className="flex gap-2 mb-6">
         {[0, 1, 2].map((i) => (
           <div
             key={i}
-            className="w-5 h-5 rounded-full bg-lime-primary"
+            className="w-5 h-5 rounded-full"
             style={{
+              backgroundColor: i % 2 === 0 ? '#7C3AED' : '#A78BFA',
               animation: 'bounce-dot 0.6s ease-in-out infinite alternate',
               animationDelay: `${i * 0.15}s`,
             }}
@@ -37,7 +38,7 @@ export default function LoadingScreen() {
         ))}
       </div>
 
-      <p className="text-lg font-bold text-eel animate-pulse">
+      <p className="text-lg font-bold text-ink animate-pulse">
         {messages[index]}
       </p>
 

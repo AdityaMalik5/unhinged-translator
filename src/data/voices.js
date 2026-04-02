@@ -2,7 +2,6 @@ export const voices = [
   {
     id: 'conspiracy',
     name: 'Conspiracy Theorist',
-    emoji: '🕵️',
     label: 'Conspiracy',
     color: '#FF4B4B',
     bgTint: '#FFF0F0',
@@ -13,7 +12,6 @@ export const voices = [
   {
     id: 'toddler',
     name: 'Toddler',
-    emoji: '👶',
     label: 'Toddler',
     color: '#FF9600',
     bgTint: '#FFFBEA',
@@ -24,7 +22,6 @@ export const voices = [
   {
     id: 'medieval',
     name: 'Medieval Peasant',
-    emoji: '⚔️',
     label: 'Medieval',
     color: '#9B6F3E',
     bgTint: '#FFF8F0',
@@ -35,7 +32,6 @@ export const voices = [
   {
     id: 'intern',
     name: 'Sleep-Deprived Intern',
-    emoji: '😵',
     label: 'Intern',
     color: '#777777',
     bgTint: '#F5F5F5',
@@ -46,7 +42,6 @@ export const voices = [
   {
     id: 'ramsay',
     name: 'Gordon Ramsay',
-    emoji: '👨‍🍳',
     label: 'Ramsay',
     color: '#FF6B35',
     bgTint: '#FFF4EE',
@@ -57,7 +52,6 @@ export const voices = [
   {
     id: 'desi-parent',
     name: 'Disappointed Desi Parent',
-    emoji: '🎓',
     label: 'Desi Parent',
     color: '#22C55E',
     bgTint: '#F0FFF4',
@@ -68,7 +62,6 @@ export const voices = [
   {
     id: 'commentator',
     name: 'Sports Commentator',
-    emoji: '🎙️',
     label: 'Commentator',
     color: '#1CB0F6',
     bgTint: '#F0F6FF',
@@ -79,7 +72,6 @@ export const voices = [
   {
     id: 'shakespeare',
     name: 'Shakespeare',
-    emoji: '🎭',
     label: 'Shakespeare',
     color: '#A855F7',
     bgTint: '#F8F0FF',

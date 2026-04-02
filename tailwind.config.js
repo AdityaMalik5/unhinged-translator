@@ -4,6 +4,33 @@ export default {
   theme: {
     extend: {
       colors: {
+        blush: {
+          light: '#FDE8E0',
+          DEFAULT: '#F5C6B8',
+          dark: '#E8A090',
+        },
+        coral: {
+          light: '#F0A8A0',
+          DEFAULT: '#E87870',
+          dark: '#D45A52',
+        },
+        tangerine: {
+          light: '#FF8844',
+          DEFAULT: '#E85A00',
+          dark: '#CC4E00',
+        },
+        ink: {
+          DEFAULT: '#1A1A1A',
+          light: '#555555',
+        },
+        cream: {
+          DEFAULT: '#FFF5F0',
+          white: '#FFFFFF',
+        },
+        rose: {
+          soft: '#FFD5CC',
+        },
+        // Keep some utility colors
         lime: {
           primary: '#58CC02',
           dark: '#46A302',

@@ -8,6 +8,7 @@ import TextInput from './components/TextInput'
 import LoadingScreen from './components/LoadingScreen'
 import ResultCard from './components/ResultCard'
 import PaywallModal from './components/PaywallModal'
+import Sparkles from './components/Sparkles'
 
 export default function App() {
   const [inputText, setInputText] = useState('')
@@ -54,7 +55,8 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen max-w-lg mx-auto pb-10">
+    <div className="relative min-h-screen max-w-lg mx-auto pb-10 overflow-hidden">
+      <Sparkles />
       <Header remaining={remaining} limit={limit} />
 
       {isLoading ? (
@@ -81,7 +83,7 @@ export default function App() {
             isLoading={isLoading}
           />
           {error && (
-            <div className="mx-4 mt-3 p-4 rounded-duo bg-candy-primary/10 border-2 border-candy-primary/30 text-candy-dark font-bold text-sm text-center">
+            <div className="mx-4 mt-3 p-4 rounded-duo bg-coral/10 border-2 border-coral/30 text-coral-dark font-bold text-sm text-center">
               {error}
             </div>
           )}

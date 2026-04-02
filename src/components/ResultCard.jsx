@@ -10,7 +10,7 @@ export default function ResultCard({
   const [copied, setCopied] = useState(false)
   const [shared, setShared] = useState(false)
 
-  const shareText = `${translatedText}\n\n— Translated by ${voice.emoji} ${voice.name} on Unhinged Translator\nTry it: unhingd.fun`
+  const shareText = `${translatedText}\n\n— Translated by ${voice.name} on Unhinged Translator\nTry it: unhingd.fun`
 
   async function handleCopy() {
     try {
@@ -18,7 +18,6 @@ export default function ResultCard({
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      // Fallback for older browsers
       const textarea = document.createElement('textarea')
       textarea.value = shareText
       textarea.style.position = 'fixed'
@@ -39,7 +38,7 @@ export default function ResultCard({
         : translatedText
 
     const shareData = {
-      title: `${voice.emoji} Unhinged Translation`,
+      title: 'Unhinged Translation',
       text: `${truncated}\n\n— ${voice.name} on Unhinged Translator`,
       url: 'https://unhingd.fun',
     }
@@ -58,13 +57,13 @@ export default function ResultCard({
   }
 
   return (
-    <div className="px-4 py-2 animate-fade-in">
+    <div className="relative z-10 px-4 py-2 animate-fade-in">
       {/* Original text */}
       <div className="mb-4">
-        <p className="text-xs font-bold text-eel-light uppercase tracking-wide mb-2 px-1">
+        <p className="text-xs font-bold text-ink-light uppercase tracking-wide mb-2 px-1">
           Original
         </p>
-        <div className="p-3 rounded-duo bg-snow-off border border-swan text-sm text-eel-light leading-relaxed max-h-24 overflow-y-auto">
+        <div className="p-3 rounded-duo bg-cream-white/70 border border-blush-dark/30 text-sm text-ink-light leading-relaxed max-h-24 overflow-y-auto">
           {originalText}
         </div>
       </div>
@@ -72,10 +71,10 @@ export default function ResultCard({
       {/* Translated result */}
       <div className="mb-5">
         <p className="text-xs font-bold uppercase tracking-wide mb-2 px-1" style={{ color: voice.color }}>
-          {voice.emoji} {voice.name}
+          {voice.name}
         </p>
         <div
-          className="p-5 rounded-duo border-2 text-eel leading-relaxed text-base font-medium"
+          className="p-5 rounded-duo border-2 text-ink leading-relaxed text-base font-medium"
           style={{
             backgroundColor: voice.bgTint,
             borderColor: voice.borderColor,
@@ -95,24 +94,24 @@ export default function ResultCard({
             active:translate-y-[2px] active:shadow-none
             ${
               copied
-                ? 'bg-lime-primary border-lime-dark text-white shadow-duo-sm shadow-lime-dark'
-                : 'bg-white border-swan text-eel hover:border-lime-primary shadow-duo-sm shadow-swan'
+                ? 'bg-purple-600/80 border-purple-700 text-white shadow-duo-sm shadow-purple-800/60 backdrop-blur-sm'
+                : 'bg-purple-100/30 border-purple-300/40 text-ink backdrop-blur-sm hover:border-purple-400/60 shadow-duo-sm shadow-purple-400/15'
             }
           `}
         >
-          {copied ? '✅ Copied!' : '📋 Copy'}
+          {copied ? 'Copied!' : 'Copy'}
         </button>
         <button
           onClick={handleShare}
           className="
             flex-1 py-3.5 rounded-duo font-bold text-sm uppercase tracking-wide
-            bg-sky-primary text-white border-2 border-sky-dark
-            shadow-duo-sm shadow-sky-dark
+            bg-purple-600/80 text-white border border-purple-400/30
+            shadow-duo-sm shadow-purple-800/60 backdrop-blur-sm
             active:translate-y-[2px] active:shadow-none
-            transition-all duration-150
+            transition-all duration-150 hover:bg-purple-700/85
           "
         >
-          {shared ? '✅ Shared!' : '🚀 Share'}
+          {shared ? 'Shared!' : 'Share'}
         </button>
       </div>
 
@@ -122,25 +121,25 @@ export default function ResultCard({
           onClick={onTryAnother}
           className="
             flex-1 py-3.5 rounded-duo font-bold text-sm uppercase tracking-wide
-            bg-lime-primary text-white border-2 border-lime-dark
-            shadow-duo-sm shadow-lime-dark
+            bg-purple-500/70 text-white border border-purple-400/30
+            shadow-duo-sm shadow-purple-700/50 backdrop-blur-sm
             active:translate-y-[2px] active:shadow-none
-            transition-all duration-150
+            transition-all duration-150 hover:bg-purple-600/80
           "
         >
-          🔄 Try Another
+          Try Another
         </button>
         <button
           onClick={onChangeVoice}
           className="
             flex-1 py-3.5 rounded-duo font-bold text-sm uppercase tracking-wide
-            bg-grape-primary text-white border-2 border-grape-dark
-            shadow-duo-sm shadow-grape-dark
+            bg-purple-100/30 text-ink border-2 border-purple-300/40
+            shadow-duo-sm shadow-purple-400/15 backdrop-blur-sm
             active:translate-y-[2px] active:shadow-none
-            transition-all duration-150
+            transition-all duration-150 hover:border-purple-400/60 hover:bg-purple-200/40
           "
         >
-          🎭 Change Voice
+          Change Voice
         </button>
       </div>
 

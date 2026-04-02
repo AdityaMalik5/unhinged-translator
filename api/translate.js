@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: 'Method not allowed' })
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY
+  const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) {
     return res.status(500).json({ message: 'API key not configured' })
   }
@@ -18,30 +18,47 @@ export default async function handler(req, res) {
     return res.status(400).json({ message: 'Text too long (max 5000 characters)' })
   }
 
+  const systemPrompt = `You are a comedic rewriter. Your job is to take any text and COMPLETELY rewrite it in a specific character's voice. You must NEVER return the original text. Every single word must change. The output must sound like a completely different person wrote it.
+
+CHARACTER TO PLAY:
+${voicePrompt}
+
+ABSOLUTE RULES:
+- NEVER copy the input text. Not even partially. Rewrite EVERY word.
+- You ARE this character. Stay in character for every single word.
+- Go ABSURDLY over the top. Be dramatic, funny, unhinged, and ridiculous.
+- Use the character's catchphrases, verbal tics, slang, and worldview in EVERY sentence.
+- For short inputs: EXPAND them. Add the character's reactions, tangents, and commentary. A short input should get a longer, funnier output.
+- For long inputs: Transform every sentence while keeping the general meaning.
+- Output ONLY the rewritten text. No quotes, no explanations, no "here's my version".
+- If the input has typos or errors, DO NOT preserve them — rewrite everything from scratch in your character's voice.`
+
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
+        'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-6-20250514',
-        max_tokens: 1000,
-        system: `${voicePrompt}\n\nRewrite the following text completely in your voice and style. Keep the core meaning but express it in the most extreme version of your character possible. Be funny, creative, and commit fully to the bit. Output only the rewritten text — no explanations, no preamble, no quotation marks around the output. Keep it roughly similar in length to the original (within 50% longer or shorter).`,
-        messages: [{ role: 'user', content: text }],
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: text },
+        ],
+        max_tokens: 2000,
+        temperature: 1.2,
       }),
     })
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({}))
-      console.error('Anthropic API error:', error)
+      console.error('Groq API error:', error)
       return res.status(502).json({ message: 'AI service error. Please try again.' })
     }
 
     const data = await response.json()
-    const translation = data.content[0]?.text || ''
+    const translation = data.choices?.[0]?.message?.content || ''
 
     return res.status(200).json({ translation })
   } catch (error) {
